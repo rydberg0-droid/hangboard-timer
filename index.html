@@ -33,18 +33,18 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac)}textarea{widt
 .hold:hover{border-color:rgba(255,255,255,.6)}.hold.sel{border:2px solid var(--ac);background:rgba(255,106,26,.35);box-shadow:0 0 0 4px rgba(255,106,26,.2)}
 #toast{position:fixed;left:50%;bottom:calc(100px + var(--sb));transform:translateX(-50%);background:#fff;color:#000;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;transition:opacity .3s;z-index:30;pointer-events:none}#toast.on{opacity:1}
 .mut{color:var(--mut);font-size:13px}#holdtxt{margin-top:10px}
-#run{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:flex-start;z-index:20;text-align:center;overflow-y:auto;padding:calc(20px + var(--st)) 22px calc(14px + var(--sb));gap:0;background:#09090b}
+#run{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:flex-start;z-index:20;text-align:center;overflow-y:auto;padding:calc(16px + var(--st)) 22px calc(12px + var(--sb));gap:0;background:#09090b}
 #run.prep{--pc:#e6b15a}#run.hang{--pc:#ff5a3c}#run.rest{--pc:#3dbe7a}#run.setrest{--pc:#79b7ff}#run.done{--pc:#8e8e93}
 #ph{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--pc);max-width:100%;line-height:1.3;margin:0}
-.ring{position:relative;width:min(62vw,34dvh,250px);aspect-ratio:1;margin:12px 0 8px;flex:0 0 auto}.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring{position:relative;width:min(62vw,34dvh,250px);aspect-ratio:1;margin:8px 0 4px;flex:0 0 auto}.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:5}.ring .bg{stroke:rgba(255,255,255,.08)}.ring .fg{stroke:var(--pc);stroke-linecap:round}
 #dg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:min(26vw,108px);font-weight:250;font-variant-numeric:tabular-nums;letter-spacing:-.05em}
 #grip{font-size:18px;font-weight:650;padding:0 8px;border:0;background:transparent;max-width:100%;line-height:1.35}
-#info{font-size:15px;color:var(--mut);margin:8px 0 0;font-variant-numeric:tabular-nums}
-#next{font-size:16px;font-weight:650;margin:4px 0 0;padding:0 12px;color:var(--tx)}
+#info{font-size:15px;color:var(--mut);margin:6px 0 0;font-variant-numeric:tabular-nums}
+#next{font-size:16px;font-weight:650;margin:2px 0 0;padding:0 12px;color:var(--tx)}
 #tot{font-size:13px;color:#6f6f76;margin:2px 0 0}
 #rb{width:min(88vw,440px);margin-top:12px}
-#run .ctl{display:flex;flex-direction:column;gap:8px;margin-top:auto;width:min(100%,420px);padding-top:16px}
+#run .ctl{display:flex;flex-direction:column;gap:8px;margin-top:18px;width:min(100%,420px);padding-top:0}
 #run .ctl button{min-width:44px;min-height:48px;height:48px;padding:0 12px;border:0;border-radius:14px;background:transparent;color:#c7c7cd;font:inherit;font-size:15px;font-weight:650}
 #run .ctl #rp{background:var(--ac);color:#1a0d05;width:100%;height:56px;min-height:56px;font-size:18px}
 #run .subctl{display:flex;gap:8px;width:100%}
@@ -68,10 +68,11 @@ ol,ul{padding:0;margin:0;list-style:none}li{padding:12px 0;border-bottom:1px sol
 #hb #eqseg button{flex:0 1 auto;min-height:36px;padding:4px 0;background:transparent;border:0;border-radius:0;border-bottom:2px solid transparent;color:#8e8e96;font-size:15px}
 #hb #eqseg button.on{background:transparent;color:#fff;border-bottom-color:var(--ac)}
 #handseg button.on{background:var(--ac);color:#1a0d05}
-.pickline{display:flex;flex-direction:column;gap:4px;margin:0 0 10px;color:var(--mut);font-size:13px;font-weight:700}
+.pickline{display:flex;flex-direction:column;gap:4px;margin:0 0 8px;color:var(--mut);font-size:13px;font-weight:700}
 #hb .pickline select{max-width:none;width:100%;height:48px;font-size:17px;border-radius:14px;padding:0 14px}
 .hint{margin:4px 2px 0;color:#8d8d95;font-size:13px;line-height:1.35}
-.holdline{margin:8px 2px 0;font-size:16px;font-weight:650}
+#handhint,#singlehint{display:none}
+.holdline{margin:4px 2px 10px;font-size:16px;font-weight:650}
 #hb .metric{display:flex;align-items:center;gap:8px;margin-top:6px}
 #hb .metric .ml{flex:1;min-width:0}
 #hb .metric .ml span{display:block;color:var(--tx);font-size:13px;font-weight:650}
