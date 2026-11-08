@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0a0a0b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="행보드"><link rel="apple-touch-icon" href="icon.png"><link rel="icon" href="icon.png"><link rel="manifest" href="manifest.json"><title>행보드 타이머</title>
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#09090b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="행보드"><link rel="apple-touch-icon" href="icon.png"><link rel="icon" href="icon.png"><link rel="manifest" href="manifest.json"><title>행보드 타이머</title>
 <style>
-:root{--bg:#0a0a0b;--card:#141416;--card2:#1c1c1f;--line:rgba(255,255,255,.07);--tx:#f5f5f7;--mut:#8e8e93;--ac:#ff6a1a;--pc:#ff6a1a;--sb:env(safe-area-inset-bottom);--st:env(safe-area-inset-top)}
+:root{--bg:#09090b;--card:#141416;--card2:#1c1c20;--line:rgba(255,255,255,.08);--tx:#f4f4f5;--mut:#9a9aa2;--ac:#ff7a33;--pc:#ff7a33;--sb:env(safe-area-inset-bottom);--st:env(safe-area-inset-top)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Pretendard,"Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
 main{padding:calc(20px + var(--st)) 18px calc(96px + var(--sb));max-width:560px;margin:auto}
@@ -33,18 +33,22 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac)}textarea{widt
 .hold:hover{border-color:rgba(255,255,255,.6)}.hold.sel{border:2px solid var(--ac);background:rgba(255,106,26,.35);box-shadow:0 0 0 4px rgba(255,106,26,.2)}
 #toast{position:fixed;left:50%;bottom:calc(100px + var(--sb));transform:translateX(-50%);background:#fff;color:#000;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;transition:opacity .3s;z-index:30;pointer-events:none}#toast.on{opacity:1}
 .mut{color:var(--mut);font-size:13px}#holdtxt{margin-top:10px}
-#run{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:flex-start;z-index:20;text-align:center;overflow-y:auto;padding:calc(8px + var(--st)) 12px calc(8px + var(--sb));gap:4px;background:radial-gradient(120% 70% at 50% 35%,color-mix(in srgb,var(--pc) 22%,#0a0a0b),#0a0a0b 70%);transition:background .5s}
-#run.prep{--pc:#ffc93c}#run.hang{--pc:#ff453a}#run.rest{--pc:#32d74b}#run.setrest{--pc:#64d2ff}#run.done{--pc:#8e8e93}
-#ph{font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pc);max-width:100%;line-height:1.3}
-.ring{position:relative;width:min(64vw,38dvh,240px);aspect-ratio:1;margin:2px 0;flex:0 0 auto}.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
-.ring circle{fill:none;stroke-width:6}.ring .bg{stroke:rgba(255,255,255,.08)}.ring .fg{stroke:var(--pc);stroke-linecap:round}
-#dg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:min(22vw,88px);font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
-#grip{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);max-width:100%}
-#info{font-size:14px;color:var(--mut);margin-top:2px;font-variant-numeric:tabular-nums}#tot{font-size:13px;color:var(--mut);margin-top:0;font-variant-numeric:tabular-nums}
-#rb{width:min(88vw,440px);margin-top:8px;opacity:.9}
-#run .ctl{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap;justify-content:center;width:min(100%,420px);padding-bottom:4px}
-#run .ctl button{min-width:44px;min-height:44px;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:inherit;font-size:14px;font-weight:600;backdrop-filter:blur(10px)}
-#run .ctl #rp{background:#fff;color:#000;min-width:110px}
+#run{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:flex-start;z-index:20;text-align:center;overflow-y:auto;padding:calc(20px + var(--st)) 22px calc(14px + var(--sb));gap:0;background:#09090b}
+#run.prep{--pc:#e6b15a}#run.hang{--pc:#ff5a3c}#run.rest{--pc:#3dbe7a}#run.setrest{--pc:#79b7ff}#run.done{--pc:#8e8e93}
+#ph{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--pc);max-width:100%;line-height:1.3;margin:0}
+.ring{position:relative;width:min(62vw,34dvh,250px);aspect-ratio:1;margin:12px 0 8px;flex:0 0 auto}.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}.ring .bg{stroke:rgba(255,255,255,.08)}.ring .fg{stroke:var(--pc);stroke-linecap:round}
+#dg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:min(26vw,108px);font-weight:250;font-variant-numeric:tabular-nums;letter-spacing:-.05em}
+#grip{font-size:18px;font-weight:650;padding:0 8px;border:0;background:transparent;max-width:100%;line-height:1.35}
+#info{font-size:15px;color:var(--mut);margin:8px 0 0;font-variant-numeric:tabular-nums}
+#next{font-size:16px;font-weight:650;margin:4px 0 0;padding:0 12px;color:var(--tx)}
+#tot{font-size:13px;color:#6f6f76;margin:2px 0 0}
+#rb{width:min(88vw,440px);margin-top:12px}
+#run .ctl{display:flex;flex-direction:column;gap:8px;margin-top:auto;width:min(100%,420px);padding-top:16px}
+#run .ctl button{min-width:44px;min-height:48px;height:48px;padding:0 12px;border:0;border-radius:14px;background:transparent;color:#c7c7cd;font:inherit;font-size:15px;font-weight:650}
+#run .ctl #rp{background:var(--ac);color:#1a0d05;width:100%;height:56px;min-height:56px;font-size:18px}
+#run .subctl{display:flex;gap:8px;width:100%}
+#run .subctl button{flex:1}
 .tm{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin-bottom:10px;transition:all .3s}
 .tm .t{font-size:38px;font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:-.03em}.tm .btn{width:44px;height:44px;padding:0;border-radius:50%}
 .tm.fin{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 0 30px rgba(255,106,26,.3);animation:bl 1.2s infinite}@keyframes bl{50%{opacity:.6}}
@@ -52,85 +56,98 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac)}textarea{widt
 ol,ul{padding:0;margin:0;list-style:none}li{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;font-variant-numeric:tabular-nums}li:last-child{border:0}
 .ok{color:#32d74b}.no{color:var(--mut)}
 
-#hb h1{font-size:22px;margin:0}
-#hb .topbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-main{padding:calc(12px + var(--st)) 16px calc(156px + var(--sb))}
-.seg{flex-wrap:wrap}
-#hb .seg{margin-bottom:6px}
-.seg button{flex:1 1 72px;min-height:44px}
-.seg.hands button{font-size:13px;padding:8px 0}
-#handhint{margin:0 2px 4px}
-#hb .card.compact{padding:8px 12px;margin-bottom:8px}
-#hb .big3{gap:4px}
-#hb .stp button{width:44px;height:44px;font-size:22px}
-#hb .stp span{font-size:32px;min-width:64px}
-#hb .stp label{font-size:14px}
-.chips{flex-wrap:wrap;gap:4px}
-.chips button{flex:1 1 44px;min-width:44px;min-height:44px}
-.row{flex-wrap:wrap}
-.row input,.row select,textarea{max-width:100%}
-#start{position:fixed;z-index:12;left:50%;bottom:calc(68px + var(--sb));transform:translateX(-50%);width:min(524px,calc(100% - 24px));min-height:48px;margin:0;padding:14px}
+#hb h1{font-size:26px;font-weight:680;letter-spacing:-.04em;margin:0;line-height:1.1}
+#hb .topbar{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px}
+.eyebrow{display:none}
+#hb section.pane{display:block}
+.pane{margin:0 0 4px}
+.pane h2{margin:0 0 6px;font-size:12px;font-weight:700;color:var(--mut)}
+#hb .seg{display:flex;background:transparent;padding:0;gap:8px;margin:0 0 8px;flex-wrap:wrap}
+#hb .seg button{flex:1 1 72px;min-height:48px;border-radius:14px;background:#17171a;color:#dddde2;border:1px solid transparent;font-size:16px;font-weight:650;padding:8px 4px}
+#hb #eqseg{gap:18px;margin:0 0 8px}
+#hb #eqseg button{flex:0 1 auto;min-height:36px;padding:4px 0;background:transparent;border:0;border-radius:0;border-bottom:2px solid transparent;color:#8e8e96;font-size:15px}
+#hb #eqseg button.on{background:transparent;color:#fff;border-bottom-color:var(--ac)}
+#handseg button.on{background:var(--ac);color:#1a0d05}
+.pickline{display:flex;flex-direction:column;gap:4px;margin:0 0 10px;color:var(--mut);font-size:13px;font-weight:700}
+#hb .pickline select{max-width:none;width:100%;height:48px;font-size:17px;border-radius:14px;padding:0 14px}
+.hint{margin:4px 2px 0;color:#8d8d95;font-size:13px;line-height:1.35}
+.holdline{margin:8px 2px 0;font-size:16px;font-weight:650}
+#hb .metric{display:flex;align-items:center;gap:8px;margin-top:6px}
+#hb .metric .ml{flex:1;min-width:0}
+#hb .metric .ml span{display:block;color:var(--tx);font-size:13px;font-weight:650}
+#hb .metric .ml p{margin:2px 0 0;display:flex;align-items:baseline;gap:4px}
+#hb .metric .ml b{font-size:28px;font-weight:560;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+#hb .metric .ml i{font-style:normal;color:var(--mut);font-size:14px}
+#hb .stp button{width:44px;height:44px;border-radius:14px;font-size:22px;background:#1c1c20;border:1px solid var(--line)}
+#hb .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+#hb .chips button{flex:1 1 44px;min-width:44px;min-height:44px;border-radius:12px;font-size:15px;background:transparent;color:#bdbdc4}
+#hb .chips button.on{background:var(--ac);color:#1a0d05;border-color:var(--ac)}
+#addstep{width:100%;min-height:48px;margin-top:6px;border-radius:16px;border:1px dashed rgba(255,122,51,.7);background:transparent;color:#ffc2a2;font-size:16px;font-weight:750}
+#seqbox{margin-top:8px}
+.seq .it{display:flex;align-items:center;gap:6px;background:#17171a;border-radius:16px;padding:4px 4px 4px 14px;margin-bottom:8px}
+.seq .it.on{outline:1px solid var(--ac)}
+.seq .pick{flex:1;min-height:52px;text-align:left;border:0;background:transparent;color:var(--tx);font:inherit;padding:6px 0}
+.seq .pick b{display:block;font-size:15px}
+.seq .sub{display:block;color:var(--mut);font-size:13px;margin-top:2px}
+.seq .mv{display:flex;gap:4px}
+.seq .mv button{min-width:44px;min-height:44px;border:0;border-radius:12px;background:#222226;color:var(--tx);font-size:16px}
+details.more{background:transparent;border:0;padding:0;margin:0 0 8px}
+details.more summary{min-height:48px;padding:12px 2px;color:#bdbdc4;font-weight:650;display:block;cursor:pointer}
+details.more summary:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+details.more summary::before{content:"";display:none}
+details.more .inn{padding:0 0 8px}
+main{padding:calc(8px + var(--st)) 20px calc(150px + var(--sb));max-width:480px}
+#start{position:fixed;z-index:12;left:50%;bottom:calc(70px + var(--sb));transform:translateX(-50%);width:min(440px,calc(100% - 32px));min-height:56px;margin:0;padding:0 16px;border-radius:18px;box-shadow:none;font-size:18px}
 #start:active{transform:translateX(-50%) scale(.98)}
-details.more{padding:0}
-details.more summary{min-height:44px;padding:12px 14px;cursor:pointer;font-weight:700;display:block}
-details.more summary:focus-visible{outline:2px solid var(--ac);outline-offset:-2px}
-details.more summary::before{content:"▸";color:var(--ac)}
-details.more[open] summary::before{content:"▾"}
-details.more .inn{padding:0 14px 14px}
-#seqbox{margin-bottom:8px}
-.seq .it{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px}
-.seq .pick{flex:1 1 160px;min-height:44px;text-align:left;border:1px solid var(--line);background:var(--card2);color:var(--tx);border-radius:14px;padding:6px 10px;font:inherit}
-.seq .it.on .pick{border-color:var(--ac)}
-.seq .pick b{display:block;font-size:14px}
-.seq .sub{display:block;color:var(--mut);font-size:12px}
-.seq .mv{display:flex;flex-wrap:wrap;gap:4px}
-.seq .mv button{min-width:44px;min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--tx);font-size:16px}
 .hold{z-index:1}
-.hold .bdg{position:absolute;left:50%;top:-8px;transform:translateX(-50%);background:var(--ac);color:#000;font-size:10px;font-weight:800;line-height:14px;padding:0 4px;border-radius:999px;pointer-events:none}
-#next{font-size:14px;font-weight:700;margin-top:8px;padding:0 8px}
-#editcap{color:var(--ac);font-weight:700;margin:0 0 6px}
-#addstep{width:100%;min-height:44px;margin-top:2px}
+.hold .bdg{position:absolute;left:50%;top:-8px;transform:translateX(-50%);background:var(--ac);color:#1a0d05;font-size:10px;font-weight:800;line-height:14px;padding:0 4px;border-radius:999px;pointer-events:none}
+
 </style></head><body>
 <nav><button data-t="hb" class="on"><i></i>트레이닝</button><button data-t="tm"><i style="border-radius:50%"></i>타이머</button><button data-t="swp"><i style="border-radius:50%;border-style:dashed"></i>스톱워치</button><button data-t="log"><i style="border-radius:4px"></i>기록</button></nav>
 <main>
 <section id="hb" class="on">
-<div class="topbar"><h1>트레이닝</h1><button class="btn sm" id="ashare" type="button">앱 공유</button></div>
-<div class="seg" id="eqseg"><button type="button" data-b="bm1000">BM 1000</button><button type="button" data-b="bm2000">BM 2000</button><button type="button" data-b="bar">철봉</button></div>
-<div class="seg hands" id="handseg" role="group" aria-label="손"><button type="button" data-h="both">양손</button><button type="button" data-h="left">왼손</button><button type="button" data-h="right">오른손</button><button type="button" data-h="alt">좌우교대</button></div>
-<p class="mut" id="handhint"></p>
-<div class="card compact big3">
-  <p class="mut" id="editcap" hidden></p>
-  <div class="stp"><label>세트 수</label><button type="button" data-k="sets" data-d="-1">−</button><span id="v_sets"></span><button type="button" data-k="sets" data-d="1">+</button></div>
-  <button class="btn" id="addstep" type="button">수행 추가</button>
-  <div class="stp"><label>수행 시간 (초)</label><button type="button" data-k="hang" data-d="-1">−</button><span id="v_hang"></span><button type="button" data-k="hang" data-d="1">+</button></div>
+<header class="topbar"><div><p class="eyebrow">오늘 훈련</p><h1>행보드</h1></div><button class="btn sm" id="ashare" type="button">공유</button></header>
+<section class="pane">
+  <h2>무엇을 잡을까</h2>
+  <div class="seg" id="eqseg" role="group" aria-label="장비"><button type="button" data-b="bm1000">BM 1000</button><button type="button" data-b="bm2000">BM 2000</button><button type="button" data-b="bar">철봉</button></div>
+  <label class="pickline">그립<select id="f_grip"></select></label>
+  <div class="seg hands" id="handseg" role="group" aria-label="손"><button type="button" data-h="both">양손</button><button type="button" data-h="left">왼손</button><button type="button" data-h="right">오른손</button><button type="button" data-h="alt">좌우교대</button></div>
+  <p class="hint" id="handhint"></p>
+  <p class="holdline" id="holdtxt">홀드를 탭해서 선택</p>
+</section>
+<section class="pane">
+  <h2>얼마나 할까</h2>
+  <div class="metric stp"><div class="ml"><span>수행 시간</span><p><b id="v_hang"></b><i>초</i></p></div><button type="button" data-k="hang" data-d="-1" aria-label="수행 시간 줄이기">−</button><button type="button" data-k="hang" data-d="1" aria-label="수행 시간 늘리기">+</button></div>
   <div class="chips" id="chips-hang" data-k="hang"></div>
-  <div class="stp"><label>렙 사이 휴식 (초)</label><button type="button" data-k="repRest" data-d="-1">−</button><span id="v_repRest"></span><button type="button" data-k="repRest" data-d="1">+</button></div>
+  <div class="metric stp"><div class="ml"><span>렙 사이 휴식</span><p><b id="v_repRest"></b><i>초</i></p></div><button type="button" data-k="repRest" data-d="-1" aria-label="휴식 줄이기">−</button><button type="button" data-k="repRest" data-d="1" aria-label="휴식 늘리기">+</button></div>
   <div class="chips" id="chips-rep" data-k="repRest"></div>
-</div>
-<div id="seqbox" hidden><div class="seq" id="seqlist"></div></div>
-<details class="card more" id="more"><summary id="moresum">세부 · 보드 · 그립 · 세트 사이 휴식</summary><div class="inn">
+  <div class="metric stp"><div class="ml"><span>세트 수</span><p><b id="v_sets"></b><i>번 반복</i></p></div><button type="button" data-k="sets" data-d="-1" aria-label="세트 줄이기">−</button><button type="button" data-k="sets" data-d="1" aria-label="세트 늘리기">+</button></div>
+  <p class="hint" id="editcap" hidden></p>
+  <div id="seqbox" hidden><div class="seq" id="seqlist"></div></div>
+  <button class="btn" id="addstep" type="button">+ 수행 추가</button>
+  <p class="hint" id="singlehint">세트 수는 이 순서를 반복하는 횟수입니다. 수행 추가는 다른 행을 순서에 넣습니다.</p>
+</section>
+<details class="pane more" id="more"><summary id="moresum">더보기 · 세트 사이 휴식</summary><div class="inn">
   <div class="row"><label>프리셋</label><select id="psel"></select></div>
   <div class="row btns"><button class="btn sm" id="psave" type="button">저장</button><button class="btn sm" id="pnew" type="button">새로 저장</button><button class="btn sm" id="pdel" type="button">삭제</button><button class="btn sm" id="pshare" type="button">프리셋 공유</button></div>
   <div class="row" id="namerow"><label>수행 이름</label><input id="f_stepname" maxlength="40"></div>
   <div id="gapbox">
-    <div class="stp"><label>다음 수행까지 (초)</label><button type="button" data-k="gap" data-d="-1">−</button><span id="v_gap"></span><button type="button" data-k="gap" data-d="1">+</button></div>
+    <div class="stp metric"><div class="ml"><span>다음 수행까지</span><p><b id="v_gap"></b><i>초</i></p></div><button type="button" data-k="gap" data-d="-1" aria-label="사이 휴식 줄이기">−</button><button type="button" data-k="gap" data-d="1" aria-label="사이 휴식 늘리기">+</button></div>
     <div class="chips" id="chips-gap" data-k="gap"></div>
-    <p class="mut">이 수행과 다음 수행 사이의 휴식입니다.</p>
+    <p class="hint">이 수행과 다음 수행 사이의 휴식입니다.</p>
   </div>
-  <p class="mut" id="gaphintlast" hidden>마지막 수행 다음은 세트 사이 휴식입니다.</p>
-  <div class="stp"><label>세트 사이 휴식 (초)</label><button type="button" data-k="rest" data-d="-5">−</button><span id="v_rest"></span><button type="button" data-k="rest" data-d="5">+</button></div>
+  <p class="hint" id="gaphintlast" hidden>마지막 수행 다음은 세트 사이 휴식입니다.</p>
+  <div class="stp metric"><div class="ml"><span>세트 사이 휴식</span><p><b id="v_rest"></b><i>초</i></p></div><button type="button" data-k="rest" data-d="-5" aria-label="세트 휴식 줄이기">−</button><button type="button" data-k="rest" data-d="5" aria-label="세트 휴식 늘리기">+</button></div>
   <div class="chips" id="chips-set" data-k="rest"></div>
   <div class="row"><label>준비 (초)</label><input type="number" id="f_prep" min="0"></div>
   <div class="row"><label>반복 (렙)</label><input type="number" id="f_reps" min="1"></div>
-  <div class="row"><label>렙 사이 휴식 (초)</label><input type="number" id="f_repRest" min="0"> <span class="mut">직접 입력</span></div>
-  <div class="row"><label>그립</label><select id="f_grip"></select></div>
+  <div class="row"><label>렙 사이 휴식 (초)</label><input type="number" id="f_repRest" min="0"></div>
   <div class="row"><label>추가 무게 (kg)</label><input type="number" id="f_kg" step="0.5"></div>
   <div class="row" id="exrow"><label>운동</label><select id="f_ex"></select></div>
   <div class="row" style="display:none"><label>장비</label><select id="f_board"><option value="bm1000">Beastmaker 1000</option><option value="bm2000">Beastmaker 2000</option><option value="bar">철봉 (Pull-up bar)</option></select></div>
   <div class="chips" id="holdside"><button type="button" data-side="L">왼쪽 홀드</button><button type="button" data-side="R">오른쪽 홀드</button></div>
-  <div class="board" id="bd"></div><div class="mut" id="holdtxt">홀드를 탭해서 선택</div>
-  <textarea id="f_notes" rows="2" placeholder="엣지/그립/무게 메모"></textarea>
-  <p class="mut">양손·한손은 렙당 1회, 좌우교대는 렙당 왼·오. 수행을 더하면 그 사이 휴식 뒤에 다른 행이 이어집니다.</p>
+  <div class="board" id="bd"></div>
+  <textarea id="f_notes" rows="2" placeholder="메모"></textarea>
 </div></details>
 <button class="btn go" id="start" type="button">시작</button>
 </section>
@@ -139,7 +156,7 @@ details.more .inn{padding:0 14px 14px}
 <section id="log"><h1>기록</h1><div class="card"><div class="row btns"><span style="flex:1" class="mut">최근 운동</span><button class="btn sm" id="lclr">전체 삭제</button></div><ul id="ll"></ul></div></section>
 </main>
 <div id="toast"></div><div id="run"><div id="ph"></div><div class="ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="46"/><circle class="fg" id="rg" cx="50" cy="50" r="46" stroke-dasharray="289.03" stroke-dashoffset="0"/></svg><div id="dg"></div></div><div id="grip"></div><div id="info"></div><div id="next"></div><div id="tot"></div>
-<div class="ctl"><button id="rp" type="button">일시정지</button><button id="rm5" type="button">−5초</button><button id="ra5" type="button">+5초</button><button id="rs" type="button">건너뛰기</button><button id="rr" type="button">다시</button><button id="rx" type="button">종료</button><button id="rboard" type="button" aria-expanded="false">보드</button></div>
+<div class="ctl"><button id="rp" type="button">일시정지</button><div class="subctl"><button id="rs" type="button">건너뛰기</button><button id="rr" type="button">다시</button><button id="rx" type="button">종료</button></div><div class="subctl minor"><button id="rm5" type="button">−5초</button><button id="ra5" type="button">+5초</button><button id="rboard" type="button" aria-expanded="false">보드</button></div></div>
 <div class="board" id="rb" hidden></div></div>
 <script src="logic.js"></script>
 <script>
@@ -147,7 +164,7 @@ const IMG={bm1000:"data:image/jpeg;base64,/9j/4QCuRXhpZgAASUkqAAgAAAAGABIBAwABAA
 const HOLDS={
 bm1000:[["상단 저그 L",13,31],["상단 포켓 L",43,31],["상단 포켓 R",56,31],["상단 저그 R",87,31],["중단 슬로퍼 L",12,49],["중단 포켓",25,49],["중단 엣지",36,49],["중단 엣지 C",50,49],["중단 엣지",64,49],["중단 포켓",75,49],["중단 슬로퍼 R",88,49],["하단 엣지",21,71],["하단 엣지",33,71],["하단 엣지",44,71],["하단 엣지",56,71],["하단 엣지",67,71],["하단 엣지",79,71]],
 bm2000:[["상단 포켓 L",43,30],["상단 포켓 R",56,30],["중단 엣지 L",11,45],["모노",21,45],["2핑거",28,45],["3핑거",37,45],["중단 엣지 C",50,45],["3핑거",63,45],["2핑거",72,45],["모노",79,45],["중단 엣지 R",89,45],["하단 엣지 L",12,71],["모노/2핑",21,71],["3핑거",28,71],["엣지",37,71],["하단 엣지 C",50,71],["엣지",63,71],["3핑거",72,71],["모노/2핑",79,71],["하단 엣지 R",88,71]]};
-const GRIPS=[["half","하프 크림프 (Half crimp)"],["open","오픈 핸드 (Open hand)"],["drag","3핑거 드래그 (3-finger drag)"],["pinch","핀치 (Pinch)"],["sloper","슬로퍼 (Sloper)"],["2f_front","2핑거 앞 (2-finger front)"],["2f_mid","2핑거 중간 (2-finger middle)"],["2f_back","2핑거 뒤 (2-finger back)"],["mono","모노 (Mono)"]];
+const GRIPS=[["half","하프 크림프"],["open","오픈 핸드"],["drag","3핑거 드래그"],["pinch","핀치"],["sloper","슬로퍼"],["2f_front","2핑거 앞"],["2f_mid","2핑거 중간"],["2f_back","2핑거 뒤"],["mono","모노"]];
 const EX=[["dead","양손 데드행"],["onearm","한팔 행 (L/R 교대)"],["weighted","가중 행"],["pullup","풀업"],["lockoff","락오프"]];
 const EN=k=>(EX.find(e=>e[0]===k)||["","-"])[1];
 const GN=k=>(GRIPS.find(g=>g[0]===k)||["","-"])[1];
@@ -222,7 +239,7 @@ function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt
 function renderSeq(){
   const box=$("seqlist");
   if(!HangLogic.isSequence(S)){box.innerHTML="";return}
-  box.innerHTML=S.steps.map((st,i)=>`<div class="it${i===stepIdx?" on":""}" data-i="${i}"><button type="button" class="pick" data-a="sel"><b>${esc(st.name)}</b><span class="sub">${st.hang}초 · ${HangLogic.HAND_LABEL[st.hand]||""} · ${GN(st.grip)}</span></button><div class="mv"><button type="button" data-a="up" aria-label="위로">↑</button><button type="button" data-a="dn" aria-label="아래로">↓</button><button type="button" data-a="rm" aria-label="삭제">✕</button></div></div>`).join("");
+  box.innerHTML=S.steps.map((st,i)=>`<div class="it${i===stepIdx?" on":""}" data-i="${i}"><button type="button" class="pick" data-a="sel"><b>${i+1}. ${esc(st.name)}</b><span class="sub">${st.hang}초 · ${HangLogic.HAND_LABEL[st.hand]||""} · ${GN(st.grip)}</span></button><div class="mv"><button type="button" data-a="up" aria-label="위로">↑</button><button type="button" data-a="dn" aria-label="아래로">↓</button><button type="button" data-a="rm" aria-label="삭제">✕</button></div></div>`).join("");
   box.querySelectorAll(".it").forEach(it=>{
     const i=+it.dataset.i;
     it.querySelector('[data-a="sel"]').onclick=()=>{stepIdx=i;pickSide="L";fill()};
@@ -237,19 +254,19 @@ function fill(){
   const v=view();const seq=HangLogic.isSequence(S);
   $("v_sets").textContent=S.sets;$("v_hang").textContent=v.hang;$("v_repRest").textContent=v.repRest;$("v_rest").textContent=S.rest;$("v_gap").textContent=v.gap||0;
   $("f_prep").value=S.prep;$("f_reps").value=v.reps;$("f_repRest").value=v.repRest;$("f_kg").value=v.kg;$("f_notes").value=v.notes||"";$("f_grip").value=v.grip;$("f_board").value=v.board;$("f_ex").value=v.ex||"dead";$("f_stepname").value=seq?(v.name||""):"";
-  $("namerow").hidden=!seq;$("exrow").style.display=v.board==="bar"?"":"none";$("holdtxt").style.display=v.board==="bar"?"none":"";
+  $("namerow").hidden=!seq;$("exrow").style.display=v.board==="bar"?"":"none";$("singlehint").hidden=seq;
   document.querySelectorAll("#handseg button").forEach(b=>{const on=b.dataset.h===v.hand;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false")});
   document.querySelectorAll("#eqseg button").forEach(b=>b.classList.toggle("on",b.dataset.b===v.board));
   document.querySelectorAll(".chips[data-k]").forEach(c=>{const k=c.dataset.k;const cur=k==="rest"?S.rest:v[k];c.querySelectorAll("button").forEach(b=>{const on=+b.dataset.v===+cur;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false")})});
-  const HINT={both:"양손은 같이 한 번. 렙이 늘지 않습니다.",left:"왼손만, 렙마다 한 번.",right:"오른손만, 렙마다 한 번.",alt:"한 렙 안에서 왼손 다음 오른손."};
-  $("handhint").textContent=(seq?(v.name||"수행")+" · ":"")+(HINT[v.hand]||"");
-  $("editcap").hidden=!seq;$("editcap").textContent=seq?v.name:"";$("seqbox").hidden=!seq;
+  const HINT={both:"두 손을 동시에, 한 번으로 셉니다.",left:"이번 수행은 왼손만.",right:"이번 수행은 오른손만.",alt:"한 번 안에 왼손, 그다음 오른손."};
+  $("handhint").textContent=HINT[v.hand]||"";
+  $("editcap").hidden=!seq;$("editcap").textContent=seq?("지금 고치는 수행 · "+(v.name||"")):"";$("seqbox").hidden=!seq;
   const last=seq&&stepIdx>=S.steps.length-1;
   $("gapbox").hidden=!seq||last;$("gaphintlast").hidden=!seq||!last;
   $("holdside").hidden=v.board==="bar"||!(v.hand==="both"||v.hand==="alt");
   $("holdside").querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.side===pickSide));
   const setLabel=S.rest>=60&&S.rest%60===0?(S.rest/60)+"분":S.rest+"초";
-  $("moresum").textContent=`세부 · ${v.reps}렙 · 세트 사이 휴식 ${setLabel}`+(seq?` · 수행 ${S.steps.length}`:"");
+  $("moresum").textContent=`더보기 · 세트 사이 휴식 ${setLabel}`;
   renderSeq();
   drawBoard($("bd"),v.board,editorHolds(v),true);
   $("holdtxt").textContent=v.board==="bar"?("선택 운동: "+EN(v.ex)):holdText(v);
