@@ -250,6 +250,9 @@ test("page wires hand choices, short-rest chips, and sequence add", () => {
   assert.match(html, /data-h="right"/);
   assert.match(html, /data-h="alt"/);
   assert.match(html, /수행 추가/);
+  assert.ok(html.indexOf('id="addstep"') < html.indexOf('id="more"'), "수행 추가 sits above the details panel");
+  assert.match(html, /세트 수/);
+  assert.match(html, /id="rr"/);
   assert.match(html, /렙 사이 휴식/);
   assert.match(html, /세트 사이 휴식/);
   assert.match(html, /HANG_CHIPS/);
