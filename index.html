@@ -43,7 +43,13 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac)}textarea{widt
 #info{font-size:15px;color:var(--mut);margin:6px 0 0;font-variant-numeric:tabular-nums}
 #next{font-size:16px;font-weight:650;margin:2px 0 0;padding:0 12px;color:var(--tx)}
 #tot{font-size:13px;color:#6f6f76;margin:2px 0 0}
-#hb #bd{width:100%;margin:8px 0 0}
+#holdside[hidden],#bd[hidden],#bdback[hidden],#bdclose[hidden],#singlehint[hidden],#editcap[hidden]{display:none !important}
+#hb #bd{width:150px;margin:0 auto;cursor:pointer}
+#hb #bd.open{position:fixed;z-index:26;left:12px;right:12px;top:12%;width:auto;max-width:560px;margin:0 auto;cursor:default}
+#hb #bd .hold{pointer-events:none}
+#hb #bd.open .hold{pointer-events:auto}
+#bdback{position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.72)}
+#bdclose{position:fixed;z-index:27;top:12px;right:12px;min-width:44px;min-height:44px}
 #hb #bd img,#rb img{border-radius:12px}
 #rb{width:min(88%,300px);margin:6px auto 0}
 #run .ctl{display:flex;flex-direction:column;gap:6px;margin-top:8px;width:min(100%,420px);padding-top:0}
@@ -58,34 +64,36 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac)}textarea{widt
 ol,ul{padding:0;margin:0;list-style:none}li{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;font-variant-numeric:tabular-nums}li:last-child{border:0}
 .ok{color:#32d74b}.no{color:var(--mut)}
 
-#hb h1{font-size:26px;font-weight:680;letter-spacing:-.04em;margin:0;line-height:1.1}
-#hb .topbar{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px}
+#hb h1{font-size:22px;font-weight:680;letter-spacing:-.04em;margin:0;line-height:1.1}
+#hb .topbar{display:flex;align-items:center;justify-content:space-between;margin:0}
 .eyebrow{display:none}
 #hb section.pane{display:block}
 .pane{margin:0 0 4px}
-.pane h2{margin:0 0 6px;font-size:12px;font-weight:700;color:var(--mut)}
-#hb .seg{display:flex;background:transparent;padding:0;gap:8px;margin:0 0 8px;flex-wrap:wrap}
-#hb .seg button{flex:1 1 72px;min-height:48px;border-radius:14px;background:#17171a;color:#dddde2;border:1px solid transparent;font-size:16px;font-weight:650;padding:8px 4px}
-#hb #eqseg{gap:18px;margin:0 0 8px}
+.pane h2{display:none}
+#hb .seg{display:flex;background:transparent;padding:0;gap:6px;margin:0 0 4px;flex-wrap:wrap}
+#hb .seg button{flex:1 1 72px;min-height:44px;border-radius:14px;background:#17171a;color:#dddde2;border:1px solid transparent;font-size:15px;font-weight:650;padding:6px 4px}
+#hb #eqseg{gap:14px;margin:0 0 2px}
 #hb #eqseg button{flex:0 1 auto;min-height:36px;padding:4px 0;background:transparent;border:0;border-radius:0;border-bottom:2px solid transparent;color:#8e8e96;font-size:15px}
 #hb #eqseg button.on{background:transparent;color:#fff;border-bottom-color:var(--ac)}
 #handseg button.on{background:var(--ac);color:#1a0d05}
-.pickline{display:flex;flex-direction:column;gap:4px;margin:0 0 8px;color:var(--mut);font-size:13px;font-weight:700}
-#hb .pickline select{max-width:none;width:100%;height:48px;font-size:17px;border-radius:14px;padding:0 14px}
+.pickline{display:flex;flex-direction:column;gap:2px;margin:0 0 4px;color:var(--mut);font-size:12px;font-weight:700}
+#hb .pickline select{max-width:none;width:100%;height:44px;font-size:16px;border-radius:14px;padding:0 14px}
 .hint{margin:4px 2px 0;color:#8d8d95;font-size:13px;line-height:1.35}
 #handhint,#singlehint{display:none}
-.holdline{margin:4px 2px 10px;font-size:16px;font-weight:650}
-#hb .metric{display:flex;align-items:center;gap:8px;margin-top:6px}
+.holdline{margin:0 2px;font-size:13px;font-weight:650}
+#hb .metric{display:flex;align-items:center;gap:6px;margin-top:2px}
 #hb .metric .ml{flex:1;min-width:0}
 #hb .metric .ml span{display:block;color:var(--tx);font-size:13px;font-weight:650}
 #hb .metric .ml p{margin:2px 0 0;display:flex;align-items:baseline;gap:4px}
-#hb .metric .ml b{font-size:28px;font-weight:560;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+#hb .metric .ml b{font-size:22px;font-weight:560;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+.pair{display:flex;gap:8px;margin-top:2px}
+.pair .metric{flex:1;margin-top:0;min-width:0}
 #hb .metric .ml i{font-style:normal;color:var(--mut);font-size:14px}
 #hb .stp button{width:44px;height:44px;border-radius:14px;font-size:22px;background:#1c1c20;border:1px solid var(--line)}
-#hb .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+#hb .chips{display:flex;flex-wrap:wrap;gap:4px;margin:2px 0 0}
 #hb .chips button{flex:1 1 44px;min-width:44px;min-height:44px;border-radius:12px;font-size:15px;background:transparent;color:#bdbdc4}
 #hb .chips button.on{background:var(--ac);color:#1a0d05;border-color:var(--ac)}
-#addstep{width:100%;min-height:48px;margin-top:6px;border-radius:16px;border:1px dashed rgba(255,122,51,.7);background:transparent;color:#ffc2a2;font-size:16px;font-weight:750}
+#addstep{width:100%;min-height:44px;margin-top:2px;border-radius:14px;border:1px dashed rgba(255,122,51,.7);background:transparent;color:#ffc2a2;font-size:16px;font-weight:750}
 #seqbox{margin-top:8px}
 .seq .it{display:flex;align-items:center;gap:6px;background:#17171a;border-radius:16px;padding:4px 4px 4px 14px;margin-bottom:8px}
 .seq .it.on{outline:1px solid var(--ac)}
@@ -100,7 +108,7 @@ details.more summary:focus-visible{outline:2px solid var(--ac);outline-offset:2p
 details.more summary::before{content:"";display:none}
 details.more .inn{padding:0 0 8px}
 main{padding:calc(8px + var(--st)) 20px calc(150px + var(--sb));max-width:480px}
-#start{position:fixed;z-index:12;left:50%;bottom:calc(70px + var(--sb));transform:translateX(-50%);width:min(440px,calc(100% - 32px));min-height:56px;margin:0;padding:0 16px;border-radius:18px;box-shadow:none;font-size:18px}
+#start{position:fixed;z-index:12;left:50%;bottom:calc(62px + var(--sb));transform:translateX(-50%);width:min(440px,calc(100% - 32px));min-height:48px;margin:0;padding:0 16px;border-radius:18px;box-shadow:none;font-size:17px}
 #start:active{transform:translateX(-50%) scale(.98)}
 .hold{z-index:1}
 .hold .bdg{position:absolute;left:50%;top:-8px;transform:translateX(-50%);background:var(--ac);color:#1a0d05;font-size:10px;font-weight:800;line-height:14px;padding:0 4px;border-radius:999px;pointer-events:none}
@@ -118,7 +126,8 @@ main{padding:calc(8px + var(--st)) 20px calc(150px + var(--sb));max-width:480px}
   <p class="hint" id="handhint"></p>
   <p class="holdline" id="holdtxt">홀드를 탭해서 선택</p>
   <div class="chips" id="holdside"><button type="button" data-side="L">왼쪽 홀드</button><button type="button" data-side="R">오른쪽 홀드</button></div>
-  <div class="board" id="bd"></div>
+  <div class="board" id="bd" role="button" tabindex="0" aria-label="보드, 탭하면 크게 봅니다"></div>
+<div id="bdback" hidden></div><button type="button" class="btn sm" id="bdclose" hidden>닫기</button>
 </section>
 <section class="pane">
   <h2>얼마나 할까</h2>
@@ -126,7 +135,10 @@ main{padding:calc(8px + var(--st)) 20px calc(150px + var(--sb));max-width:480px}
   <div class="chips" id="chips-hang" data-k="hang"></div>
   <div class="metric stp"><div class="ml"><span>렙 사이 휴식</span><p><b id="v_repRest"></b><i>초</i></p></div><button type="button" data-k="repRest" data-d="-1" aria-label="휴식 줄이기">−</button><button type="button" data-k="repRest" data-d="1" aria-label="휴식 늘리기">+</button></div>
   <div class="chips" id="chips-rep" data-k="repRest"></div>
-  <div class="metric stp"><div class="ml"><span>세트 수</span><p><b id="v_sets"></b><i>번 반복</i></p></div><button type="button" data-k="sets" data-d="-1" aria-label="세트 줄이기">−</button><button type="button" data-k="sets" data-d="1" aria-label="세트 늘리기">+</button></div>
+  <div class="pair">
+    <div class="metric stp"><div class="ml"><span>렙</span><p><b id="v_reps"></b></p></div><button type="button" data-k="reps" data-d="-1" aria-label="렙 줄이기">−</button><button type="button" data-k="reps" data-d="1" aria-label="렙 늘리기">+</button></div>
+    <div class="metric stp"><div class="ml"><span>세트</span><p><b id="v_sets"></b></p></div><button type="button" data-k="sets" data-d="-1" aria-label="세트 수 줄이기">−</button><button type="button" data-k="sets" data-d="1" aria-label="세트 수 늘리기">+</button></div>
+  </div>
   <p class="hint" id="editcap" hidden></p>
   <div id="seqbox" hidden><div class="seq" id="seqlist"></div></div>
   <button class="btn" id="addstep" type="button">+ 수행 추가</button>
@@ -231,6 +243,8 @@ function holdText(v){
   if(v.holdL===v.holdR)return "양손 홀드: "+nm(v.holdL);
   return "왼: "+nm(v.holdL)+" · 오: "+nm(v.holdR);
 }
+function closeBoard(refill){$("bd").classList.remove("open");$("bdback").hidden=true;$("bdclose").hidden=true;if(refill!==false)fill()}
+function openBoard(){if($("bd").hidden||$("bd").classList.contains("open"))return;$("bd").classList.add("open");$("bdback").hidden=false;$("bdclose").hidden=false;fill()}
 function assignHold(i){
   const v=view();
   const side=v.hand==="right"?"R":v.hand==="left"?"L":pickSide;
@@ -256,9 +270,9 @@ function moveStep(i,dir){const j=i+dir;S=HangLogic.moveStep(S,i,dir,OPTS());if(s
 function removeStep(i){S=HangLogic.removeStepAt(S,i,OPTS());stepIdx=HangLogic.isSequence(S)?Math.min(i,S.steps.length-1):0;fill()}
 function fill(){
   const v=view();const seq=HangLogic.isSequence(S);
-  $("v_sets").textContent=S.sets;$("v_hang").textContent=v.hang;$("v_repRest").textContent=v.repRest;$("v_rest").textContent=S.rest;$("v_gap").textContent=v.gap||0;
+  $("v_sets").textContent=S.sets;$("v_reps").textContent=v.reps;$("v_hang").textContent=v.hang;$("v_repRest").textContent=v.repRest;$("v_rest").textContent=S.rest;$("v_gap").textContent=v.gap||0;
   $("f_prep").value=S.prep;$("f_reps").value=v.reps;$("f_repRest").value=v.repRest;$("f_kg").value=v.kg;$("f_notes").value=v.notes||"";$("f_grip").value=v.grip;$("f_board").value=v.board;$("f_ex").value=v.ex||"dead";$("f_stepname").value=seq?(v.name||""):"";
-  $("namerow").hidden=!seq;$("exrow").style.display=v.board==="bar"?"":"none";$("singlehint").hidden=seq;$("bd").hidden=v.board==="bar";
+  $("namerow").hidden=!seq;$("exrow").style.display=v.board==="bar"?"":"none";$("singlehint").hidden=seq;$("bd").hidden=v.board==="bar";if(v.board==="bar"&&$("bd").classList.contains("open"))closeBoard(false);
   document.querySelectorAll("#handseg button").forEach(b=>{const on=b.dataset.h===v.hand;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false")});
   document.querySelectorAll("#eqseg button").forEach(b=>b.classList.toggle("on",b.dataset.b===v.board));
   document.querySelectorAll(".chips[data-k]").forEach(c=>{const k=c.dataset.k;const cur=k==="rest"?S.rest:v[k];c.querySelectorAll("button").forEach(b=>{const on=+b.dataset.v===+cur;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false")})});
@@ -267,7 +281,7 @@ function fill(){
   $("editcap").hidden=!seq;$("editcap").textContent=seq?("지금 고치는 수행 · "+(v.name||"")):"";$("seqbox").hidden=!seq;
   const last=seq&&stepIdx>=S.steps.length-1;
   $("gapbox").hidden=!seq||last;$("gaphintlast").hidden=!seq||!last;
-  $("holdside").hidden=v.board==="bar"||!(v.hand==="both"||v.hand==="alt");
+  $("holdside").hidden=!$("bd").classList.contains("open")||v.board==="bar"||!(v.hand==="both"||v.hand==="alt");
   $("holdside").querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.side===pickSide));
   const setLabel=S.rest>=60&&S.rest%60===0?(S.rest/60)+"분":S.rest+"초";
   $("moresum").textContent=`더보기 · 세트 사이 휴식 ${setLabel}`;
@@ -289,6 +303,10 @@ const go=()=>{const k=b.dataset.k;const target=(k==="sets"||k==="rest")?S:view()
 b.onpointerdown=e=>{e.preventDefault();n=0;go();const rep=()=>{n++;go();to=setTimeout(rep,n<5?180:n<15?90:40)};to=setTimeout(rep,450)};
 b.onpointerup=b.onpointerleave=b.onpointercancel=stop;b.oncontextmenu=e=>e.preventDefault()});
 $("holdside").querySelectorAll("button").forEach(b=>b.onclick=()=>{pickSide=b.dataset.side;fill()});
+$("bd").addEventListener("click",e=>{if($("bd").classList.contains("open"))return;e.preventDefault();e.stopPropagation();openBoard()},{capture:true});
+$("bdback").onclick=()=>closeBoard();
+$("bdclose").onclick=()=>closeBoard();
+
 $("psel").onchange=e=>{cur=+e.target.value;SV("hb_cur",cur);S=deep(P[cur]);stepIdx=0;pickSide="L";fill()};
 $("psave").onclick=()=>{P[cur]=deep(S);S=deep(P[cur]);SV("hb_presets",P);toast("저장됨")};
 $("pnew").onclick=()=>{const n=prompt("프리셋 이름",S.name+" 복사");if(!n)return;S.name=n;P.push(deep(S));cur=P.length-1;SV("hb_presets",P);SV("hb_cur",cur);fill()};
