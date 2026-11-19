@@ -194,7 +194,11 @@ const DEF=[
 {name:"철봉 가중 행",prep:10,hang:10,repRest:0,reps:1,sets:5,rest:180,alt:false,hand:"both",grip:"open",kg:15,board:"bar",ex:"weighted",hold:0,holdL:0,holdR:0,notes:""},
 {name:"풀업",prep:5,hang:30,repRest:0,reps:1,sets:5,rest:120,alt:false,hand:"both",grip:"open",kg:0,board:"bar",ex:"pullup",hold:0,holdL:0,holdR:0,notes:"세트당 8회"},
 {name:"락오프 90°",prep:10,hang:5,repRest:5,reps:3,sets:3,rest:120,alt:true,hand:"alt",grip:"open",kg:0,board:"bar",ex:"lockoff",hold:0,holdL:0,holdR:0,notes:"90°/120° 각도"},
-{name:"덴시티 행",prep:10,hang:30,repRest:0,reps:1,sets:4,rest:120,alt:false,hand:"both",grip:"open",kg:0,board:"bm1000",hold:7,holdL:7,holdR:7,ex:"dead",notes:"20-40초 행"}];
+{name:"덴시티 행",prep:10,hang:30,repRest:0,reps:1,sets:4,rest:120,alt:false,hand:"both",grip:"open",kg:0,board:"bm1000",hold:7,holdL:7,holdR:7,ex:"dead",notes:"20-40초 행"},
+{name:"BM 간헐적 행 (7/3)",prep:10,hang:7,repRest:3,reps:6,sets:2,rest:300,alt:false,hand:"both",grip:"half",kg:0,board:"bm2000",hold:6,holdL:6,holdR:6,ex:"dead",notes:"그립당 1~2세트(최대 3그립), 세트 간 5분 휴식 / 6:4 또는 5:5 변형 가능"},
+{name:"BM 짧은 최대 행",prep:10,hang:10,repRest:0,reps:1,sets:4,rest:180,alt:false,hand:"both",grip:"half",kg:0,board:"bm2000",hold:6,holdL:6,holdR:6,ex:"dead",notes:"5~12초 최대 강도 / 3~5회 반복, 행 사이 2~3분 휴식 (신경근 근력)"},
+{name:"BM 긴 최대 행",prep:10,hang:20,repRest:0,reps:1,sets:4,rest:240,alt:false,hand:"both",grip:"half",kg:0,board:"bm2000",hold:6,holdL:6,holdR:6,ex:"dead",notes:"20초 최대 행 / 3~5회 반복, 행 사이 3~5분 휴식 (근비대·장기 근력)"},
+{name:"BM 텐던 행",prep:10,hang:40,repRest:0,reps:1,sets:3,rest:300,alt:false,hand:"both",grip:"open",kg:0,board:"bm2000",hold:6,holdL:6,holdR:6,ex:"dead",notes:"30~45초(45초 실패 강도) / 3회 반복, 행 사이 5분 휴식 (컨택 스트렝스·힘줄)"}];
 const LS=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},SV=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 const $=id=>document.getElementById(id);
 const OPTS=()=>({holdCounts:{bm1000:HOLDS.bm1000.length,bm2000:HOLDS.bm2000.length}});
@@ -202,6 +206,7 @@ const deep=p=>HangLogic.normalizePreset(JSON.parse(JSON.stringify(p)),OPTS());
 let P=LS("hb_presets",null);
 if(!P)P=JSON.parse(JSON.stringify(DEF));
 if(!LS("hb_v2",0)){DEF.filter(d=>d.board==="bar"&&!P.some(p=>p.name===d.name)).forEach(d=>P.push(JSON.parse(JSON.stringify(d))));SV("hb_presets",P);SV("hb_v2",1)}
+if(!LS("hb_v4",0)){DEF.filter(d=>!P.some(p=>p.name===d.name)).forEach(d=>P.push(JSON.parse(JSON.stringify(d))));SV("hb_presets",P);SV("hb_v4",1)}
 P=P.map(p=>HangLogic.normalizePreset(p,OPTS()));
 if(!LS("hb_v3",0)){SV("hb_presets",P);SV("hb_v3",1)}
 let cur=LS("hb_cur",0);if(!P[cur])cur=0;
